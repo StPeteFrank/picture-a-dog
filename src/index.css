@@ -22,6 +22,9 @@ code {
 h1 {
   font-weight: 300;
   text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 input:focus {
   outline: 0;
@@ -30,6 +33,9 @@ input:focus {
 }
 input {
   border: 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.3em 0.2em 0;
   width: 100%;
   color: #2a5263;
@@ -37,4 +43,22 @@ input {
   line-height: 1.5em;
   background-color: #fff;
   opacity: 0.5;
+}
+li {
+  list-style: none;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+button {
+  border: 1px solid black;
+  background-color: rgb(221, 213, 213);
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 1px;
 }
