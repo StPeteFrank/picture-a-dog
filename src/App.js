@@ -23,9 +23,13 @@ class App extends Component {
   }
 
   clickBreed = event => {
-    let dogBreed = event.target.className
+    let dogBreed = event.target.value
 
-    console.log(dogBreed)
+    axios.get(`https://dog.ceo/api/breed/${dogBreed}/images`).then(response => {
+      this.setState({
+        image: response.data.message[0]
+      })
+    })
 
     // use the api to fetch an image for this breed
     // and update the state for `image`
@@ -39,22 +43,22 @@ class App extends Component {
           <h1>Dog Breed Finder 🐾</h1>
         </header>
         <main>
-          <form>
+          {/* <form>
             <input type="text" placeholder="Enter Dog Breed" />
-          </form>
-          <img src={this.state.image} />
-          <ul>
-            {this.state.breeds.map(breed => {
+          </form> */}
+          <select onChange={this.clickBreed}>
+            <option value="">Select a Dog</option>
+            {this.state.breeds.map((breed, index) => {
               return (
-                <button onClick={this.clickBreed} class={breed}>
+                <option key={index} value={breed}>
                   {breed}
-                </button>
+                </option>
               )
             })}
-          </ul>
+          </select>
 
-          <div>
-            <p>⬇️ Dog Images Go Here ⬇️</p>
+          <div className="breedImage">
+            <img src={this.state.image} />
           </div>
         </main>
       </div>
@@ -64,12 +68,27 @@ class App extends Component {
 
 export default App
 
-//What do you want this app to do:
-//Make a list of 10 hardcoded dogs show image
+//Questions?
 
-//Enter a dog name in an input bar
-//Hit enter and dog image pops up
+//How to image random
+//Is there enough to break into components
+//How can i add a scroll button on the imagea
+
+//This app will display images of different dog breeds.
+//The data will pull from dog.ceo/api
+//option to click from 12 random breed buttons and display image
+//option for drop down bar to select from A list
+
+//A list of random breeds as buttons
+//Buttons clicked show breed image
+//How to reduce the initial breeds button list to 12 options
+//How to make the image display after click
+
+// menu with a drop down menu with a list of dogs
+//Hit go button and the breed image pops up and displays
 
 //Study API
 //Practice API in Postman
-//
+
+//ADD a slideshow option
+//Work with react-router to use the browser to display images
