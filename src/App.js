@@ -1,31 +1,14 @@
 import React, { Component } from 'react'
 import DisplayImage from './DisplayImage'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 
 import './App.css'
-import BreedChoser from './BreedChoser'
+import BreedChooser from './BreedChooser'
 import DogShow from './DogShow'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      image: '',
-      breeds: []
-    }
-  }
-
-  fetchOneRandomDog = () => {
-    axios.get(`https://dog.ceo/api/breeds/image/random`).then(response => {
-      this.setState({
-        image: response.data.message
-      })
-    })
-  }
-
   render() {
     return (
       <div className="App">
@@ -35,15 +18,17 @@ class App extends Component {
         <main>
           <Router>
             <>
-              <Route exact path="/" component={BreedChoser} />
-              <Route exact path="/dogshow" component={DogShow} />
-              <Route exact path="/:breed" component={DisplayImage} />
+              <Switch>
+                <Route exact path="/" component={BreedChooser} />
+                <Route exact path="/dogshow" component={DogShow} />
+                <Route exact path="/:breed" component={DisplayImage} />
+              </Switch>
             </>
           </Router>
 
-          <div className="breedImage">
+          {/* <div className="breedImage">
             <img src={this.state.image} />
-          </div>
+          </div> */}
         </main>
       </div>
     )

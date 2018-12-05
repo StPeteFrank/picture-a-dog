@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class BreedChoser extends Component {
+class BreedChooser extends Component {
   constructor(props) {
     super(props)
 
@@ -40,4 +40,4 @@ class BreedChoser extends Component {
   }
 }
 
-export default BreedChoser
+export default BreedChooser

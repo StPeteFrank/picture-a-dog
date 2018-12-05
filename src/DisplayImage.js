@@ -29,10 +29,10 @@ class DisplayImage extends Component {
   render() {
     return (
       <div>
+        <button onClick={this.dogShow}>Dog Show!</button>
         <div className="breedImage">
           <img src={this.state.image} />
         </div>
-        <button onClick={this.dogShow}>Dog Show!</button>
       </div>
     )
   }

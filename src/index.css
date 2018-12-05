@@ -67,3 +67,8 @@ button {
   border-radius: 7px;
   border-color: black;
 }
+.breedSlideShow img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 7px;
+}
