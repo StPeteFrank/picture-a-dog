@@ -46,6 +46,7 @@ select {
   cursor: pointer;
   font-size: 2vh;
   opacity: 0.6;
+  border-color: black;
 }
 .breedImage {
   height: 90vh;
@@ -55,4 +56,14 @@ select {
   max-width: 90vw;
   max-height: 85vh;
   border-radius: 7px;
+}
+button {
+  width: 40vw;
+  height: 5vh;
+  margin: 3vh;
+  cursor: pointer;
+  font-size: 2vh;
+  opacity: 0.6;
+  border-radius: 7px;
+  border-color: black;
 }

@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import DisplayImage from './DisplayImage'
+
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import axios from 'axios'
+
+import './App.css'
+import BreedChoser from './BreedChoser'
+import DogShow from './DogShow'
 
 class App extends Component {
   constructor(props) {
@@ -13,32 +18,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    axios.get('https://dog.ceo/api/breeds/list/all').then(response => {
-      console.log(response.data)
-      this.setState({
-        breeds: Object.keys(response.data.message)
-      })
-    })
-  }
-
-  clickBreed = event => {
-    let dogBreed = event.target.value
-
-    axios
-      .get(`https://dog.ceo/api/breed/${dogBreed}/images/random`)
-      .then(response => {
-        console.log(response.data)
-
-        this.setState({
-          image: response.data.message
-        })
-      })
-
-    // use the api to fetch an image for this breed
-    // and update the state for `image`
-  }
-
   fetchOneRandomDog = () => {
     axios.get(`https://dog.ceo/api/breeds/image/random`).then(response => {
       this.setState({
@@ -47,34 +26,24 @@ class App extends Component {
     })
   }
 
-  dogShow = () => {
-    setInterval(this.fetchOneRandomDog, 1000)
-  }
-
   render() {
-    console.log(this.state.breeds)
     return (
       <div className="App">
         <header>
           <h1>Dog Breed Finder 🐾</h1>
         </header>
         <main>
-          <select onChange={this.clickBreed}>
-            <option value="">Select a Dog</option>
-            {this.state.breeds.map((breed, index) => {
-              return (
-                <option key={index} value={breed}>
-                  {breed}
-                </option>
-              )
-            })}
-          </select>
+          <Router>
+            <>
+              <Route exact path="/" component={BreedChoser} />
+              <Route exact path="/dogshow" component={DogShow} />
+              <Route exact path="/:breed" component={DisplayImage} />
+            </>
+          </Router>
 
           <div className="breedImage">
             <img src={this.state.image} />
           </div>
-
-          <button onClick={this.dogShow}>Dog Show!</button>
         </main>
       </div>
     )
@@ -83,22 +52,23 @@ class App extends Component {
 
 export default App
 
-//Questions?
+//How do I?
 
-//How to image random X
-//Can I set up a separate component for my onChange that sends user to the next screen for images
-//How can i add a scroll button on the images slideshow for clicked breed random pics
-//How can I add a "dogshow" slideshow that automatically scrolls through ALL randomly on a third component screen
+//Which declared functions do i need to move into the desired components file.
+//Place Dog Show button on under displayed image section on
+// --the DisplayImage page.
+//Dog Show renders on DogShow page.
 
-//This app will display images of different dog breeds.
-//The data will pull from dog.ceo/api
-// menu with a drop down menu with a list of dogs
-//Buttons clicked show breed image
-//How to make the image display after click
-//Hit go button and the breed image pops up and displays
+//DONE How to image random
+//DONE This app will display images of different dog breeds.
+//DONE The data will pull from dog.ceo/api
+//DONE Menu with a drop down menu with a list of dogs
+//DONE Buttons clicked show breed image
+//DONE How to make the image display after click
+//DONE Dogshow button with slideshow.
 
 //Study API
 //Practice API in Postman
 
-//ADD a slideshow option
+//DONE ADD a slideshow option
 //Work with react-router to use the browser to display images
