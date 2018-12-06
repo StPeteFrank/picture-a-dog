@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import DisplayImage from './DisplayImage'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import axios from 'axios'
 
 import './App.css'
 import BreedChooser from './BreedChooser'
@@ -25,10 +24,6 @@ class App extends Component {
               </Switch>
             </>
           </Router>
-
-          {/* <div className="breedImage">
-            <img src={this.state.image} />
-          </div> */}
         </main>
       </div>
     )

@@ -9,7 +9,6 @@ class BreedChooser extends Component {
       breeds: []
     }
   }
-
   componentDidMount = () => {
     axios.get('https://dog.ceo/api/breeds/list/all').then(response => {
       this.setState({
@@ -17,13 +16,11 @@ class BreedChooser extends Component {
       })
     })
   }
-
   clickBreed = event => {
     let dogBreed = event.target.value
 
     window.location = `/${dogBreed}`
   }
-
   render() {
     return (
       <select onChange={this.clickBreed}>

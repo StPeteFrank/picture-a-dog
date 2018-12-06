@@ -9,7 +9,6 @@ class DisplayImage extends Component {
       image: ''
     }
   }
-
   componentDidMount = () => {
     const dogBreed = this.props.match.params.breed
 
@@ -21,11 +20,9 @@ class DisplayImage extends Component {
         })
       })
   }
-
   dogShow = () => {
     window.location = '/dogshow'
   }
-
   render() {
     return (
       <div>
