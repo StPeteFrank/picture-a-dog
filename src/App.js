@@ -32,8 +32,6 @@ class App extends Component {
 
 export default App
 
-//How do I?
-
 //Which declared functions do i need to move into the desired components file.
 //Place Dog Show button on under displayed image section on
 // --the DisplayImage page.
